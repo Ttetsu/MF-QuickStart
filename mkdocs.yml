@@ -1,0 +1,5 @@
+site_name: MovingFeature Server Manual
+nav:
+    - Home: index.md
+    - Examples: coding.md
+
