@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>MovingFeature Server Manual</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=".">MovingFeature Server Manual</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href=".">Home</a>
+                            </li>
+                            <li >
+                                <a href="coding/">Examples</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="disabled">
+                                <a rel="next" >
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="coding/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#welcome">Welcome</a></li>
+            <li><a href="#clientid-and-clientsecret">ClientId and ClientSecret</a></li>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#access-server">Access Server</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="welcome">Welcome</h1>
+<p>Welcome to MovingFeatures Quickstart Introduction.  </p>
+<p>We provide two ways to access the MovingFeatures server.<br />
+  This guide will help you access MovingFeatures Server with browser.</p>
+<p><strong> Requisites</strong>  </p>
+<ul>
+<li>You have installed the JDK  (at least Java8) .  </li>
+<li>You have installed the Maven  (at least Maven3.6) .  </li>
+</ul>
+<p><strong> Quick Start </strong><br />
+  Access to MovingFeatures server with browser.  </p>
+<p><strong> Examples </strong><br />
+  Access to MovingFeatures server with java or python Examples.  </p>
+<hr />
+<h2 id="clientid-and-clientsecret">ClientId and ClientSecret</h2>
+<p><strong> No matter which way you access the server, you need to get Client Id and Client Secret at first.</strong><br />
+<strong> If you already have the Client Id and Client Secret, skip to Quick Start. </strong>  </p>
+<ul>
+<li>
+<p>First, Access the following url to login server Using your user and password.<br />
+<a href="https://dps.aaic.hpcc.jp/pntml/user">https://dps.aaic.hpcc.jp/pntml/user</a></p>
+</li>
+<li>
+<p>When you logged in Successfully, Add a new application(Add Application Button).
+<img alt="Screenshot" src="img/addapplication.png" /></p>
+</li>
+<li>
+<p><strong>Input Application Information(Using Default values as follwing).</strong><br />
+    you could input Application Name And Description with any value. </p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Application Name</th>
+<th>Redirect(Callback) URL</th>
+<th>Homepage URL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User01Application</td>
+<td>https://localhost:11111/callback</td>
+<td>https://localhost:11111/index</td>
+<td>Nini Description</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Client Id and  Client Secret will be created when you clicked the save button.<br />
+<strong>Write a memo, It will be used when you  access our server.</strong>  </p>
+</li>
+</ul>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<ul>
+<li>
+<p><strong> Get PnTML-Client Project.</strong><br />
+    To Connect with our team.</p>
+</li>
+<li>
+<p><strong>Edit PnTML-Client.</strong>  </p>
+<ol>
+<li>
+<p>To Edit oauth.properties with Client Id and Client Secret.  </p>
+<p><code>cd PnTML-Client  
+ vim src/main/resources/oauth.properties</code>  </p>
+<pre><code>spring.security.oauth2.client.clientId='input your clientId'  
+spring.security.oauth2.client.clientSecret='input your clientSecret'
+</code></pre>
+</li>
+<li>
+<p>Edit application.properties.<br />
+    To Edit application.properties with a key-store-password And a tomcat.basedir.<br />
+<code>vim src/main/resources/application.properties</code>  </p>
+<pre><code>server.port=11111
+
+server.ssl.key-store=./keystore.p12  
+server.ssl.key-store-password='input password'  
+server.ssl.keyStoreType=PKCS12  
+server.ssl.keyAlias=tomcat
+
+server.tomcat.basedir='input tomcat log dir'
+</code></pre>
+</li>
+<li>
+<p>Create keystore.p12 file.<br />
+    To Create keystore.p12 file with key-store-password what you inputted above.<br />
+    When you execute the following command, you Also need to input other informations except password(it can be angthing).  </p>
+<p><code>keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650</code>  </p>
+</li>
+<li>
+<p>Start PnTML-Client<br />
+    To compile PnTML-Client.  </p>
+<p><code>mvn compile  
+ mvn package</code></p>
+<p>To Start PnTML-Client Server.<br />
+<code>java -Djava.net.preferIPv4Stack=true -jar target/pntml-client-1.0.0.jar</code>  </p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="access-server">Access Server</h2>
+<ul>
+<li>
+<p><strong> To Access Pntml Server with the following URL.</strong>  </p>
+<p><a href="https://localhost:11111/index">https://localhost:11111/index</a></p>
+</li>
+<li>
+<p><strong> Access MovingFeatures</strong><br />
+     When you logged in Successfully, a list of URL will be seen.<br />
+<img alt="Screenshot" src="img/index-page01.png" /><br />
+     To click The  <strong>Moving Feature </strong> link to access MovingFeatures Server API list.<br />
+<img alt="Screenshot" src="img/mf-page01.png" /><br />
+     Now, you could use MovingFeatures GET or POST methods with the follwing links.</p>
+<ol>
+<li>
+<p><strong>post a collection</strong><br />
+ To click The  <strong>POST /collections(Input Parameter) </strong> link to post a collection into MovingFeatures.<br />
+ It's <a href="https://dprtairc.github.io/pntml/mf-api.html#operation/registerMetadata"><strong>POST /collections </strong></a> of MF-API. <br />
+<img alt="Screenshot" src="img/psot-title001.png" />
+ <strong>Fill with the following values:</strong>   </p>
+<blockquote>
+<p>example </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th align="left">Example Value</th>
+<th align="left">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>title</code></strong></td>
+<td align="left">Test001</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td><strong><code>tags</code></strong></td>
+<td align="left">test,dummy</td>
+<td align="left">no</td>
+</tr>
+<tr>
+<td><strong><code>updateFrequency</code></strong></td>
+<td align="left">5</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td><strong><code>description</code></strong></td>
+<td align="left">this is a test title</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Submit</strong> <br />
+     Click submit button. <img alt="Screenshot" src="img/submit-button.png" /><br />
+<strong>Results:</strong>  </p>
+<p><code>{
+   "link":{
+      "href":"https://dpsdev.aaic.hpcc.jp/mf/collections/Test001","title":"Test001"
+         }
+  }</code>  </p>
+</li>
+<li>
+<p><strong>post a movingFeature into  Collection </strong><br />
+ To click The  <strong>POST /collections/{title}(Input Parameter) </strong> link to post a Moving Feature into 'Test001'.<br />
+ It's <a href="https://dprtairc.github.io/pntml/mf-api.html#operation/insertFeatures"><strong>POST /collections/{title} </strong></a> of MF-API. <br />
+ At First, you need to create a test.json file with the follwing:<br />
+<code>{
+       "type": "Feature",
+       "id": "example01",
+       "properties": {
+         "name": "car1",
+         "state": "test1"
+       },
+       "temporalGeometry": {
+         "type": "MovingPoint",
+         "datetimes": [
+           "2011-07-14T22:01:01.000Z",
+           "2011-07-14T22:01:02.000Z"
+         ],
+         "coordinates": [
+           [
+             139.757083,
+             35.627701,
+             0.5
+           ],
+           [
+             139.757399,
+             35.627701,
+             2
+           ]
+         ],
+         "interpolation": "Linear"
+       },
+       "temporalProperties": [
+         {
+           "datetimes": [
+             "2011-07-14T22:01:01.450Z",
+             "2011-07-14T23:01:01.450Z"
+           ],
+           "length": {
+             "type": "Measure",
+             "form": "http://www.qudt.org/qudt/owl/1.0.0/quantity/Length",
+             "values": [
+               1,
+               2.4
+             ],
+             "interpolation": "Linear",
+             "description": "description1"
+           }
+         }
+       ]
+     }</code></p>
+<p><strong>secondly, Fill with the following values:</strong>   </p>
+<blockquote>
+<p>example </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th align="left">Example Value</th>
+<th align="left">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>title</code></strong></td>
+<td align="left">Test001</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td><strong><code>jsonFile</code></strong></td>
+<td align="left">test.json (selected)</td>
+<td align="left">yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Submit</strong> <br />
+ Click submit button. <img alt="Screenshot" src="img/submit-button.png" /> <br />
+<strong>Results:</strong></p>
+<p><code>{
+        "link": [
+            {
+                "href": "https://dpsdev.aaic.hpcc.jp/mf/collections/Test001/mfeatures/example01",
+                "title": "example01"
+            }
+        ]
+    }</code></p>
+</li>
+<li>
+<p><strong>get collections(catalog)</strong><br />
+ To click The  <strong>GET /collections(Input Parameter) </strong> link to get collections of MovingFeatures.<br />
+ It's <a href="https://dprtairc.github.io/pntml/mf-api.html#operation/searchCatalog"><strong>GET /collections </strong></a> of MF-API. <br />
+<strong>Fill with the following values:</strong>   </p>
+<blockquote>
+<p>example </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th align="left">Example Value</th>
+<th align="left">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>bbox</code></strong></td>
+<td align="left">138,35,140,36</td>
+<td align="left">no</td>
+</tr>
+<tr>
+<td><strong><code>time</code></strong></td>
+<td align="left">2011-07-14T22:01:01.000Z,2011-07-14T22:01:02.000Z</td>
+<td align="left">no</td>
+</tr>
+<tr>
+<td><strong><code>tag</code></strong></td>
+<td align="left">dummy</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Submit</strong> <br />
+     Click submit button. <img alt="Screenshot" src="img/submit-button.png" /><br />
+<strong>Results:</strong>  </p>
+<p><code>{
+        "collections": [
+            {
+                "id": "Test001",
+                "itemType": "Feature",
+                "extent": {
+                    "tags": [
+                        "dummy",
+                        "test"
+                    ],
+                    "spatial": {
+                        "bbox": [
+                            139.757083,
+                            35.627701,
+                            139.757399,
+                            35.627701
+                        ]
+                    },
+                    "temporal": {
+                        "interval": [
+                            "2011-07-14T22:01:01.000+0000",
+                            "2011-07-14T22:01:02.000+0000"
+                        ]
+                    }
+                },
+                "links": [
+                    {
+                        "rel": "self",
+                        "href": "https://dpsdev.aaic.hpcc.jp/mf/collections/Test001"
+                    }
+                ]
+            }
+        ],
+        "links": [
+            {
+                "rel": "self",
+                "href": "https://dpsdev.aaic.hpcc.jp/mf/collections"
+            }
+        ]
+    }</code><br />
+     4. <strong>get movingFeatures of collection</strong><br />
+     To click The  <strong>GET /collections/{title}/mfeatures (Input Parameter) </strong> link to get MovingFeatures of collection.<br />
+     It's <a href="https://dprtairc.github.io/pntml/mf-api.html#operation/retrieveFeatures"><strong>GET /collections/{title}/mfeatures </strong></a> of MF-API. <br />
+<strong>Fill with the following values:</strong>   </p>
+<blockquote>
+<p>example </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th align="left">Example Value</th>
+<th align="left">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>title</code></strong></td>
+<td align="left">Test001</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td><strong><code>bbox</code></strong></td>
+<td align="left">138,35,140,36</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td><strong><code>time</code></strong></td>
+<td align="left">2011-07-14T22:01:01.000Z,2011-07-14T22:01:02.000Z</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td><strong><code>format</code></strong></td>
+<td align="left"></td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Submit</strong> <br />
+      Click submit button. <img alt="Screenshot" src="img/submit-button.png" /><br />
+<strong>Results:</strong>  </p>
+<p><code>{
+      "timeStamp": "2020-08-26T09:22:36.036+00:00",
+      "features": [
+          {
+              "bbox": [
+                  139.757083,
+                  35.627701,
+                  0.5,
+                  139.757399,
+                  35.627701,
+                  2
+              ],
+              "id": "example01",
+              "time": [
+                  "2011-07-14T22:01:01.000+0000",
+                  "2011-07-14T22:01:02.000+0000"
+              ],
+              "type": "Feature",
+              "properties": {
+                  "name": "car1",
+                  "state": "test1"
+              }
+          }
+      ],
+      "numberReturned": 1,
+      "links": [
+          {
+              "rel": "self",
+              "href": "https://dpsdev.aaic.hpcc.jp/mf/collections/Test001/mfeatures"
+          }
+      ],
+      "type": "FeatureCollection",
+      "numberMatched": 1
+  }</code></p>
+</li>
+</ol>
+</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2020-08-26 12:20:10
+-->
